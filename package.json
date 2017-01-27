@@ -4,7 +4,7 @@
   "description": "Test for backwards compatibility issue in API between releases",
   "main": "index.js",
   "scripts": {
-    "test": "node node_modules/swagger-diff/bin/swagger-diff.js -o swagger-diff.json prod.swagger.json dev.swagger.json"
+    "test": "node node_modules/swagger-diff/bin/swagger-diff.js"
   },
   "repository": {
     "type": "git",
