@@ -1,0 +1,9 @@
+machine:
+  node:
+    version: 6.0.0
+dependencies:
+  pre:
+test:
+  override:
+    - npm run test
+    - cp -R ./swagger-diff.json $CIRCLE_TEST_REPORTS/
