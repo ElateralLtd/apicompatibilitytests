@@ -1,0 +1,22 @@
+{
+  "name": "apicompatabilitytests",
+  "version": "1.0.0",
+  "description": "Test for backwards compatibility issue in API between releases",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules\\swagger-diff\\bin\\swagger-diff.js prod.swagger.json dev.swagger.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElateralLtd/apicompatabilitytests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElateralLtd/apicompatabilitytests/issues"
+  },
+  "homepage": "https://github.com/ElateralLtd/apicompatabilitytests#readme",
+  "devDependencies": {
+    "swagger-diff": "^0.6.0"
+  }
+}
