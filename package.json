@@ -1,6 +1,6 @@
 {
   "name": "apicompatabilitytests",
-  "version": "1.0.4",
+  "version": "1.0.5,
   "description": "Test for backwards compatibility issue in API between releases",
   "main": "index.js",
   "scripts": {
