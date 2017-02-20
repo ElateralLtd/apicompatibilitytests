@@ -4,7 +4,7 @@
   "description": "Test for backwards compatibility issue in API between releases",
   "main": "index.js",
   "scripts": {
-    "test": "node node_modules/swagger-diff/bin/swagger-diff.js https://api.elateral.io/v1/api-docs https://api.elateral-dev.io/v1/api-docs"
+    "test": "node node_modules/swagger-diff/bin/swagger-diff.js https://api.elateral.io/v1/api-docs https://api.elateral-qa.io/v1/api-docs"
   },
   "repository": {
     "type": "git",
