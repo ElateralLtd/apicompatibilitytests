@@ -42,6 +42,8 @@ fs.writeFile("testreport.html", content, function(err) {
         return console.log(err);
     }
 
+    var summary = "Errors: " + results.errors.length + ", Warnings: " + results.warnings.length + ", Infos: " + results.infos.length + ", UnmatchDiffs: " + results.unmatchDiffs.length;
+
     console.log("The file was saved!");
-    console.log("##teamcity[buildStatus status='SUCCESS' text='Errors, etc']");
+    console.log("##teamcity[buildStatus status='SUCCESS' text='" + summary + "']");
 });
