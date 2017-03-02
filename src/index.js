@@ -1,11 +1,40 @@
 //import requestpromise from 'request-promise';
 //import request from 'request';
 
-var fs = require('fs');
-var obj = JSON.parse(fs.readFileSync('testreport.json', 'utf8'));
+function renderList(level, items, colour) {
 
-var content = "<html><body>";
+  var render = "<li class='list-group-item list-group-item-" + colour + "' data-toggle='collapse' data-target='#" + level + "List'>" + level + "s <span class='badge'>" + items.length + "</span>";
+
+  if(items.length > 0) {
+    render += "<ul id='" + level + "List' class='list-group collapse'>";
+    items.forEach(function(item) {
+      render += "<li class='list-group-item'>" + item.path + "</li>";
+    });
+    render += "</ul>";
+  }
+
+  return render + "</li>";
+}
+
+var fs = require('fs');
+var results = JSON.parse(fs.readFileSync('testreport.json', 'utf8'));
+
+var content = "<!DOCTYPE html><html>";
+content += "<head lang='en'>";
+content += "  <title>Elateral.IO Backwards Compatibility Test Report</title>";
+content += "  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>";
+content += "  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>";
+content += "  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>";
+content += "  <meta name='viewport' content='width=device-width, initial-scale=1'>"
+content += "  <meta charset='utf-8'>";
+content += "</head>";
+content += "<body>";
 content += "<h1>Backwards Compatibility Report</h1>";
+content += "<ul class='list-group'>";
+content += renderList('error', results.errors, 'danger');
+content += renderList('warning', results.warnings, 'warning');
+content += renderList('info', results.infos, 'info');
+content += renderList('unmatchDiff', results.unmatchDiffs, '');
 content += "</body></html>";
 
 fs.writeFile("testreport.html", content, function(err) {
@@ -15,31 +44,3 @@ fs.writeFile("testreport.html", content, function(err) {
 
     console.log("The file was saved!");
 });
-
-// const teamcityUrl = 'https://builds.elateral.com/httpAuth/app/rest/buildTypes/id:PROJECTID/builds/running:false';
-// const teamcityHeaders = {
-//    'cache-control': 'no-cache',
-//    accept: 'application/json',
-//    authorization: 'Basic c2ltb24uaHVybGV5OmJlJHRGb2cyNA=='
-// };
-//
-// var getLastWebAppRegressionTestBuild = {
-//   method: 'GET',
-//   url: teamcityUrl.replace('PROJECTID', 'ElateralIo_NightlyQa_EndToEndRegression'),
-//   headers: teamcityHeaders
-// };
-//
-// var webAppRegressionResult = {};
-//
-// console.log('Calling TeamCity API for last test results');
-//
-// requestpromise(getLastWebAppRegressionTestBuild)
-//   .then(function (response) {
-//     var result = JSON.parse(response);
-//
-//     console.log('Found test results');
-//   })
-//   .catch(function (err) {
-//     if (error) throw new Error(error);
-//     console.log(err);
-//   });
