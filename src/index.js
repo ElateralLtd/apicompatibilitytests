@@ -43,4 +43,5 @@ fs.writeFile("testreport.html", content, function(err) {
     }
 
     console.log("The file was saved!");
+    console.log("##teamcity[buildStatus status='SUCCESS' text='Errors, etc']");
 });
