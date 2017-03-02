@@ -4,7 +4,9 @@
   "description": "Test for backwards compatibility issue in API between releases",
   "main": "index.js",
   "scripts": {
-    "test": "node node_modules/swagger-diff/bin/swagger-diff.js https://api.elateral.io/v1/api-docs https://api.elateral-qa.io/v1/api-docs"
+    "transpile-es2015": "babel src -d lib",
+    "test": "node node_modules/swagger-diff/bin/swagger-diff.js -o testreport.json https://api.elateral.io/v1/api-docs https://api.elateral-qa.io/v1/api-docs",
+    "run": "npm run transpile-es2015 && node lib/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,9 @@
   },
   "homepage": "https://github.com/ElateralLtd/apicompatabilitytests#readme",
   "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "lodash": "^4.17.4",
     "swagger-diff": "^0.6.0"
   }
 }
