@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "transpile-es2015": "babel src -d lib",
-    "test": "node node_modules/swagger-diff/bin/swagger-diff.js -o testreport.json https://api.elateral.io/v1/api-docs https://api.elateral-qa.io/v1/api-docs",
     "run": "npm run transpile-es2015 && node lib/index.js"
   },
   "repository": {
