@@ -11,8 +11,8 @@ if "%DONOTRUNONENVIRONMENT%" == "true" (
 	call npm install
 	call npm install -g swagger-diff
 	call path=%%PATH%%;%%APPDATA%%\npm
-	echo swagger-diff -o testreport.json !oldApiUrl! !newApiUrl!
-	call swagger-diff -o testreport.json !oldApiUrl! !newApiUrl!
+	echo swagger-diff -c elateralioconfig.json -o testreport.json !oldApiUrl! !newApiUrl!
+	call swagger-diff -c elateralioconfig.json -o testreport.json !oldApiUrl! !newApiUrl!
 	call npm run run --oldApiHost=%1 --newApiHost=%2 --apiVersion=%3
 
 	set "oldApiUrl="
