@@ -1,7 +1,7 @@
 @ECHO OFF
 setlocal ENABLEDELAYEDEXPANSION
 if "%DONOTRUNONENVIRONMENT%" == "true" (
-	echo ##teamcity[buildStatus status='NotSuitable' text='These tests are not suitable for this environment']
+	echo ##teamcity[buildStatus status='NotSuitable' text='These tests are not run against this environment']
 ) else (
 	set oldApiUrl=https://%1/%3/api-docs
 	set newApiUrl=https://%2/%3/api-docs
