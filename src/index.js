@@ -53,7 +53,7 @@ fs.writeFile("testreport.html", content, function(err) {
         return console.log(err);
     }
 
-    var summary = "Tests failed: " + results.errors.length + ", warnings: " + results.warnings.length + ", infos: " + results.infos.length + ", undetermines: " + results.unmatchDiffs.length;
+    var summary = "Issues breaking: " + results.errors.length + ", warnings: " + results.warnings.length + ", infos: " + results.infos.length + ", undetermines: " + results.unmatchDiffs.length;
     var passFail = results.errors.length > 0 ? 'FAILURE' : 'SUCCESS';
     console.log("The file was saved!");
     console.log("##teamcity[buildStatus status='" + passFail + "' text='" + summary + "']");
